@@ -129,13 +129,13 @@ export class NacimientosComponent implements OnInit {
     doc.setLineWidth(0.5);
     doc.setFontStyle("normal");
     doc.setFontSize(10);
-    doc.text(this.nacimientoService.nacimiento.data.cui, 60, 100);
+    doc.text(this.nacimientoService.nacimiento.data.cui+"", 60, 100);
     doc.line(60, 102, 200, 102);
     doc.setFontSize(9);
     doc.text('Código Único de Identificación CUI',60,105);
     //Fecha Nac
     doc.setFontSize(10);
-    doc.text(this.nacimientoService.nacimiento.data.fechaNacimiento, 60, 111);
+    doc.text(this.nacimientoService.nacimiento.data.fechaNacimiento+"", 60, 111);
     doc.line(60, 113, 200, 113);
     doc.setFontSize(9);
     doc.text('Fecha de nacimiento',60,116);
@@ -147,7 +147,7 @@ export class NacimientosComponent implements OnInit {
     doc.text('Lugar de nacimiento',60,127);    
     //Genero
     doc.setFontSize(10);
-    doc.text(this.nacimientoService.nacimiento.data.genero, 60, 133);
+    doc.text(this.nacimientoService.nacimiento.data.genero+"", 60, 133);
     doc.line(60, 135, 200, 135);
     doc.setFontSize(9);
     doc.text('Género',60,138);
@@ -162,7 +162,7 @@ export class NacimientosComponent implements OnInit {
     doc.setLineWidth(0.5);
     doc.setFontStyle("normal");
     doc.setFontSize(10);
-    doc.text(this.nacimientoService.nacimiento.data.cuiMadre, 10, 150+valy);
+    doc.text(this.nacimientoService.nacimiento.data.cuiMadre+"", 10, 150+valy);
     doc.line(10, 152+valy,80, 152+valy);
     doc.setFontSize(9);
     doc.text('Código Único de Identificación CUI',10,155+valy);
@@ -174,7 +174,7 @@ export class NacimientosComponent implements OnInit {
     doc.text('Nombres y apellidos de la madre',10,165+valy);
     //Fecha Nac
     doc.setFontSize(10);
-    doc.text(this.nacimientoService.nacimiento.data.fechaNacimientoMadre,10, 170+valy);
+    doc.text(this.nacimientoService.nacimiento.data.fechaNacimientoMadre+"",10, 170+valy);
     doc.line(10, 172+valy, 80, 172+valy);
     doc.setFontSize(9);
     doc.text('Fecha de nacimiento',10,175+valy);
@@ -194,7 +194,7 @@ export class NacimientosComponent implements OnInit {
     doc.setLineWidth(0.5);
     doc.setFontStyle("normal");
     doc.setFontSize(10);
-    doc.text(this.nacimientoService.nacimiento.data.cuiPadre, 130, 150+valy);
+    doc.text(this.nacimientoService.nacimiento.data.cuiPadre+"", 130, 150+valy);
     doc.line(130, 152+valy,200, 152+valy);
     doc.setFontSize(9);
     doc.text('Código Único de Identificación CUI',130,155+valy);
@@ -206,7 +206,7 @@ export class NacimientosComponent implements OnInit {
     doc.text('Nombres y apellidos del padre',130,165+valy);
     //Fecha Nac
     doc.setFontSize(10);
-    doc.text(this.nacimientoService.nacimiento.data.fechaNacimientoPadre,130, 170+valy);
+    doc.text(this.nacimientoService.nacimiento.data.fechaNacimientoPadre+"",130, 170+valy);
     doc.line(130, 172+valy, 200, 172+valy);
     doc.setFontSize(9);
     doc.text('Fecha de nacimiento',130,175+valy);

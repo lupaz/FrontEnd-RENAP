@@ -122,7 +122,7 @@ export class MatrimoniosComponent implements OnInit {
     doc.setLineWidth(0.5);
     doc.setFontStyle("normal");
     doc.setFontSize(10);
-    doc.text(this.matrimonioService.matrimonio.data.cuiHombre, 60, 80);
+    doc.text(this.matrimonioService.matrimonio.data.cuiHombre+"", 60, 80);
     doc.line(60, 82, 200, 82);
     doc.setFontSize(9);
     doc.text('Código Único de Identificación CUI',60,85);
@@ -154,7 +154,7 @@ export class MatrimoniosComponent implements OnInit {
     doc.setLineWidth(0.5);
     doc.setFontStyle("normal");
     doc.setFontSize(10);
-    doc.text(this.matrimonioService.matrimonio.data.cuiMujer, 60, 130);
+    doc.text(this.matrimonioService.matrimonio.data.cuiMujer+"", 60, 130);
     doc.line(60, 132, 200, 132);
     doc.setFontSize(9);
     doc.text('Código Único de Identificación CUI',60,135);
@@ -186,19 +186,19 @@ export class MatrimoniosComponent implements OnInit {
     doc.setLineWidth(0.5);
     doc.setFontStyle("normal");
     doc.setFontSize(10);
-    doc.text(this.matrimonioService.matrimonio.data.lugarMatrimonio, 60, 180);
+    doc.text(this.matrimonioService.matrimonio.data.lugarMatrimonio+"", 60, 180);
     doc.line(60, 182, 200, 182);
     doc.setFontSize(9);
     doc.text('Lugar del matrimonio',60,185);
     //fecha del matrimonio
     doc.setFontSize(10);
-    doc.text(this.matrimonioService.matrimonio.data.fechaMatrimonio, 60, 190);
+    doc.text(this.matrimonioService.matrimonio.data.fechaMatrimonio+"", 60, 190);
     doc.line(60, 192, 200, 192);
     doc.setFontSize(9);
     doc.text('Fecha del matrimonio',60,195);
     //regimen economico
     doc.setFontSize(10);
-    doc.text(this.matrimonioService.matrimonio.data.regimenMatrimonial, 60, 200);
+    doc.text(this.matrimonioService.matrimonio.data.regimenMatrimonial+"", 60, 200);
     doc.line(60, 202, 200, 202);
     doc.setFontSize(9);
     doc.text('Régimen Económico',60,205);    

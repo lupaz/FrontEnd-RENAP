@@ -107,7 +107,7 @@ export class DefuncionesComponent implements OnInit {
     doc.setLineWidth(0.5);
     doc.setFontStyle("normal");
     doc.setFontSize(10);
-    doc.text(this.defuncionService.defuncion.data.cui, 60, 80);
+    doc.text(this.defuncionService.defuncion.data.cui+"", 60, 80);
     doc.line(60, 82, 200, 82);
     doc.setFontSize(9);
     doc.text('Código Único de Identificación CUI', 60, 85);
@@ -125,25 +125,25 @@ export class DefuncionesComponent implements OnInit {
     doc.text('Pais, Departamento, Municipio de nacimiento', 60, 105);
     //Fecha Nac
     doc.setFontSize(10);
-    doc.text(this.defuncionService.defuncion.data.fechaNacimiento, 60, 110);
+    doc.text(this.defuncionService.defuncion.data.fechaNacimiento+"", 60, 110);
     doc.line(60, 112, 200, 112);
     doc.setFontSize(9);
     doc.text('Fecha de nacimiento', 60, 115);
     //Recidencia
     doc.setFontSize(10);
-    doc.text(this.defuncionService.defuncion.data.lugarDefuncion, 60, 120);
+    doc.text(this.defuncionService.defuncion.data.lugarDefuncion+"", 60, 120);
     doc.line(60, 122, 200, 122);
     doc.setFontSize(9);
     doc.text('Residencia', 60, 125);
     //Genero
     doc.setFontSize(10);
-    doc.text(this.defuncionService.defuncion.data.genero, 60, 130);
+    doc.text(this.defuncionService.defuncion.data.genero+"", 60, 130);
     doc.line(60, 132, 200, 132);
     doc.setFontSize(9);
     doc.text('Género', 60, 135);
     //estado civil
     doc.setFontSize(10);
-    doc.text(this.defuncionService.defuncion.data.estadoCivil, 60, 140);
+    doc.text(this.defuncionService.defuncion.data.estadoCivil+"", 60, 140);
     doc.line(60, 142, 200, 142);
     doc.setFontSize(9);
     doc.text('Estado Civil', 60, 145);
@@ -169,7 +169,7 @@ export class DefuncionesComponent implements OnInit {
     doc.setLineWidth(0.5);
     doc.setFontStyle("normal");
     doc.setFontSize(10);
-    doc.text(this.defuncionService.defuncion.data.cuiCompareciente, 60, 180);
+    doc.text(this.defuncionService.defuncion.data.cuiCompareciente+"", 60, 180);
     doc.line(60, 182, 200, 182);
     doc.setFontSize(9);
     doc.text('Código Único de Identificación CUI', 60, 185);
@@ -187,7 +187,7 @@ export class DefuncionesComponent implements OnInit {
     doc.text('Pais, Departamento, Municipio de nacimiento', 60, 205);
     //recidencia del Compa
     doc.setFontSize(10);
-    doc.text(this.defuncionService.defuncion.data.recidenciaCompareciente, 60, 210);
+    doc.text(this.defuncionService.defuncion.data.recidenciaCompareciente+"", 60, 210);
     doc.line(60, 212, 200, 212);
     doc.setFontSize(9);
     doc.text('Residencia del comparciente', 60, 215);
@@ -214,13 +214,13 @@ export class DefuncionesComponent implements OnInit {
     doc.text('Lugar de fallecimiento', 60, 245);
     //fecha del defuncion
     doc.setFontSize(10);
-    doc.text(this.defuncionService.defuncion.data.fechaDefuncion, 60, 250);
+    doc.text(this.defuncionService.defuncion.data.fechaDefuncion+"", 60, 250);
     doc.line(60, 252, 200, 252);
     doc.setFontSize(9);
     doc.text('Fecha del fallecimiento', 60, 255);
     //regimen economico
     doc.setFontSize(10);
-    doc.text(this.defuncionService.defuncion.data.causa, 60, 260);
+    doc.text(this.defuncionService.defuncion.data.causa+"", 60, 260);
     doc.line(60, 262, 200, 262);
     doc.setFontSize(9);
     doc.text('Causa', 60, 265);
