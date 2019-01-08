@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Divorcio } from '../models/divorcio';
 import { DatosDiv } from '../models/datosDiv';
+import { DIRS } from '../models/uri';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class DivorcioService {
   
   divorcio: Divorcio;
   selectedDivorcio: Divorcio; 
-  readonly URL_API = 'http://35.233.139.110:3000/api';
+  readonly URL_API = DIRS.uri;
 
   constructor(private http: HttpClient) {
     this.selectedDivorcio = new Divorcio();

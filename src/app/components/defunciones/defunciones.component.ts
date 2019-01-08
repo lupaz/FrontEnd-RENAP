@@ -41,6 +41,7 @@ export class DefuncionesComponent implements OnInit {
 
   ngOnInit() {
     //this.defuncionService.defuncion = new Defuncion();
+    
   }
 
   resetForm(form?: NgForm) {

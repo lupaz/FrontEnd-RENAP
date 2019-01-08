@@ -29,6 +29,8 @@ const routes: Routes = [
   { path: 'divorcios', component: DivorciosComponent, canActivate: [AutenticacionMiddleware] }
 ];
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,4 +58,5 @@ const routes: Routes = [
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {    
+ }

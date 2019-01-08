@@ -35,8 +35,7 @@ export class NacimientosComponent implements OnInit {
   generos: {};
 
 
-  constructor(private autenticacionService: AutenticacionService, private nacimientoService: NacimientoService) {
-    
+  constructor(private autenticacionService: AutenticacionService, private nacimientoService: NacimientoService) {    
     this.idPais = localStorage.getItem('Pais');
     this.getDepartementos(this.idPais);
     this.idMunicicipio = localStorage.getItem('Muni');
@@ -46,7 +45,7 @@ export class NacimientosComponent implements OnInit {
     ];
    
     delay(0).then(() => {     
-      this.cargarSelect3();      
+      this.cargarSelect3();        
     });
     
 
