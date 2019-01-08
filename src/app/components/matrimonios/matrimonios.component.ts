@@ -163,7 +163,7 @@ export class MatrimoniosComponent implements OnInit {
     doc.text(this.matrimonioService.matrimonio.data.nombreMujer+' '+this.matrimonioService.matrimonio.data.apellidoMujer, 60, 140);
     doc.line(60, 142, 200, 142);
     doc.setFontSize(9);
-    doc.text('Nombres y apellidos del hombre',60,145);
+    doc.text('Nombres y apellidos de la mujer',60,145);
     //Lugar Nac
     doc.setFontSize(10);
     doc.text(this.matrimonioService.matrimonio.data.paisMujer+', '+this.matrimonioService.matrimonio.data.departamentoMujer+', '+this.matrimonioService.matrimonio.data.municipioMujer, 60, 150);
@@ -263,11 +263,11 @@ export class MatrimoniosComponent implements OnInit {
           M.toast({ html: 'Acta de matrimonio creada, Correctamente: ', displayLength: '8000' });
         }
         else {
-          M.toast({ html: 'ERROR: ' + res.mensage, displayLength: '5000' });
+          M.toast({ html: 'ERROR: ' + res.mensaje, displayLength: '5000' });
         }        
       },
         (error: any) => {
-          M.toast({ html: 'ERROR: '+error.error.mensaje, displayLength: '5000' });
+          M.toast({ html: 'ERROR EXT: '+error.error.mensaje, displayLength: '5000' });
         }
       );//*/    
   }

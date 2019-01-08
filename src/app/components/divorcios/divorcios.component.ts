@@ -252,11 +252,11 @@ export class DivorciosComponent implements OnInit {
           M.toast({ html: 'Acta de divorcio creada, Correctamente: ', displayLength: '8000' });
         }
         else {
-          M.toast({ html: 'ERROR: ' + res.mensage, displayLength: '5000' });
+          M.toast({ html: 'ERROR: ' + res.mensaje, displayLength: '5000' });
         }        
       },
         (error: any) => {
-          M.toast({ html: 'ERROR: '+error.error.mensaje, displayLength: '5000' });
+          M.toast({ html: 'ERROR EXT: '+error.error.mensaje, displayLength: '5000' });
         }
       );//*/    
   }

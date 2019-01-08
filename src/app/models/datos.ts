@@ -4,7 +4,8 @@ export class Datos {
     constructor(cui ='', nombre = '', apellido = '', genero='',
     fechaNacimiento='', pais = '',departamento ='',  municipio = '',lugarNacimiento='', 
     cuiPadre= '', nombrePadre ='',apellidoPadre='',fechaNacimientoPadre='',paisPadre='',departamentoPadre= '',municipioPadre= '', 
-    cuiMadre= '', nombreMadre ='',apellidoMadre='',fechaNacimientoMadre='',paisMadre='',departamentoMadre= '',municipioMadre= '',) {
+    cuiMadre= '', nombreMadre ='',apellidoMadre='',fechaNacimientoMadre='',paisMadre='',departamentoMadre= '',municipioMadre= '',
+    estadoCivil='', cuiConyuge='',nombreConyuge='',apellidoConyuge='') {
         this.cui = cui+"" ;
         this.nombre= nombre+"";
         this.apellido= apellido+"";
@@ -30,6 +31,11 @@ export class Datos {
         this.paisPadre=paisMadre+"";
         this.departamentoMadre=departamentoMadre+"";
         this.municipioMadre= municipioMadre+"";
+        //nuevos
+        this.estadoCivil=estadoCivil;
+        this.cuiConyuge=cuiConyuge;
+        this.nombreConyuge=nombreConyuge;
+        this.apellidoConyuge=apellidoConyuge;
     }    
     cui: String;
     nombre: String;
@@ -53,5 +59,11 @@ export class Datos {
     fechaNacimientoMadre:String;
     paisMadre:String;
     departamentoMadre:String;
-    municipioMadre:String; 
+    municipioMadre:String;
+    //nuevo
+    estadoCivil:String;
+    cuiConyuge:String;
+    nombreConyuge:String;
+    apellidoConyuge:String;
+
 }

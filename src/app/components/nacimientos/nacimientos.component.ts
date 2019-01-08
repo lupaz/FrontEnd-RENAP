@@ -151,6 +151,11 @@ export class NacimientosComponent implements OnInit {
     doc.line(60, 135, 200, 135);
     doc.setFontSize(9);
     doc.text('Género',60,138);
+     //EstadoCivil
+     doc.setFontSize(10);
+     doc.text(this.nacimientoService.nacimiento.data.estadoCivil+"", 120, 133);
+     doc.setFontSize(9);
+     doc.text('Estado Civil',120,138);
     
     var valy=45;
     //----Datos Madre
@@ -189,7 +194,7 @@ export class NacimientosComponent implements OnInit {
     doc.setFont("times");
     doc.setFontStyle("bold");
     //data personales
-    doc.text('Datos del padre:', 120, 145+valy);
+    doc.text('Datos del padre:', 130, 145+valy);
     //CUI
     doc.setLineWidth(0.5);
     doc.setFontStyle("normal");
@@ -216,10 +221,30 @@ export class NacimientosComponent implements OnInit {
     doc.line(130, 182+valy, 200, 182+valy);
     doc.setFontSize(9);
     doc.text('Lugar de nacimiento',130,185+valy);
+
+    //----Datos conyu
+    doc.setFont("times");
+    doc.setFontStyle("bold");
+    //data personales
+    doc.text('Datos del cónyuge:', 130, 195+valy);
+    //CUI
+    doc.setLineWidth(0.5);
+    doc.setFontStyle("normal");
+    doc.setFontSize(10);
+    doc.text(this.nacimientoService.nacimiento.data.cuiConyuge+"", 130, 200+valy);
+    doc.line(130, 202+valy,200, 202+valy);
+    doc.setFontSize(9);
+    doc.text('Código Único de Identificación CUI',130,205+valy);
+    //Nombres y Aps
+    doc.setFontSize(10);
+    doc.text('-'+this.nacimientoService.nacimiento.data.nombreConyuge+', '+this.nacimientoService.nacimiento.data.apellidoConyuge,130, 210+valy);
+    doc.line(130, 212+valy, 200, 212+valy);
+    doc.setFontSize(9);
+    doc.text('Nombres y apellidos del cónyuge',130,215+valy);
   
     doc.setLineWidth(0.5);
-    doc.line(10,200+valy,200,200+valy);
-    doc.text('ÚLTIMA LÍNEA',105,205+valy,null,null,'center');
+    doc.line(10,225+valy,200,225+valy);
+    doc.text('ÚLTIMA LÍNEA',105,230+valy,null,null,'center');
 
     doc.text('Acta de Nacimiento Ref: 1824200', 10, 285);
     doc.text(10, 290, "Fecha de Generación:");
@@ -246,7 +271,7 @@ export class NacimientosComponent implements OnInit {
   }
 
   addActaNacimiento(form: NgForm) {
-    //console.log(form.value);  
+    console.log(form.value);  
     form.value.municipio=this.idMunicicipio;
     form.value.fechaNacimiento=this.convertirFecha(form.value.fechaNacimiento);      
     var status="0";
@@ -256,14 +281,14 @@ export class NacimientosComponent implements OnInit {
         this.resetForm(form);
         //console.log(res);        
         status = res.status;
-        if( status === "1"){        
+        if( status == "1"){        
           M.toast({ html: 'Acta de nacimiento creada, CUI: ' + res.data.cui, displayLength: '8000' });
         }
         else{
           M.toast({ html: 'ERROR: ' + res.mensage, displayLength: '5000' });
         }        
       },(error:any)=>{
-        M.toast({ html: 'ERROR: '+error.error.mensaje, displayLength: '5000' }); 
+        M.toast({ html: 'ERROR EXT: '+error.error.mensaje, displayLength: '5000' }); 
       }
       );
       //*/    

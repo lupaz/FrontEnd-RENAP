@@ -275,16 +275,16 @@ export class DefuncionesComponent implements OnInit {
       .subscribe((res: any) => {
         this.resetForm(form);
         status = res.status;
-        if (status === "1") {
+        if (status == "1") {
           M.toast({ html: 'Acta de defunción creada Correctamente.', displayLength: '8000' });
         }
         else {
-          M.toast({ html: 'ERROR: ' + res.mensage, displayLength: '5000' });
+          M.toast({ html: 'ERROR: ' + res.mensaje, displayLength: '5000' });
         }
         //console.log(res);
       },
         (error: any) => {
-          M.toast({ html: 'ERROR: ' + error.error.mensaje, displayLength: '5000' });
+          M.toast({ html: 'ERROR EXT: ' + error.error.mensaje, displayLength: '5000' });
         }
       );//*/    
   }
