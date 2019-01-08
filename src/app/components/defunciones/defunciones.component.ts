@@ -249,7 +249,7 @@ export class DefuncionesComponent implements OnInit {
   searchDefuncion(value: String) {
     if (value) {
       this.preloader = true;
-      var json = '{"cui":"' + value + '"}';
+      var json = '{"cui":"' + value + '",\n"idPais" : "'+this.idPais+'"}';
       this.defuncionService.imprimirDefuncion(json)
         .subscribe(res => {
           this.defuncionService.defuncion = res as Defuncion;

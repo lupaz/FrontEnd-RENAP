@@ -229,7 +229,7 @@ export class NacimientosComponent implements OnInit {
   searchNacimiento(value: String) {
     if (value) {
       this.preloader = true;
-      var json = '{"cui":"' + value + '"}';
+      var json = '{"cui":"' + value + '",\n"idPais" : "'+this.idPais+'"}';
       this.nacimientoService.imprimirNacimiento(json)
         .subscribe((res:any) => {
           this.nacimientoService.nacimiento = res as Nacimiento;
@@ -295,7 +295,7 @@ export class NacimientosComponent implements OnInit {
         this.municipios = this.autenticacionService.municipios.data.listaMunicipios;
         //console.log(this.municipios);
       });
-      
+
     delay(500).then(() => {
       this.cargarSelect2();
     });

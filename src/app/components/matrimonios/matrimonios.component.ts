@@ -229,7 +229,7 @@ export class MatrimoniosComponent implements OnInit {
     var respuesta: any;
     if (this.cui_Hombre && this.cui_Mujer) {
       this.preloader = true;
-      var json = '{"cuiHombre": "' + this.cui_Hombre + '",\n"cuiMujer": "' + this.cui_Mujer + '"}';
+      var json = '{"cuiHombre": "' + this.cui_Hombre + '",\n"cuiMujer": "' + this.cui_Mujer + '",\n"idPais": "'+this.idPais+'"}';
       console.log(json);
       this.matrimonioService.imprimirMatrimonio(json)
         .subscribe((res: any) => {
