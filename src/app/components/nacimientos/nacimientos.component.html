@@ -1,0 +1,147 @@
+<div *ngIf="preloader" class="progress" style="margin-top: -19.5px;">
+  <div class="indeterminate"></div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+      <div class="card">
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">Buscar</span>
+          <form>
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">search</i>
+                <input type="text" name="buscar" id="buscar" (keyup)="searchNacimiento(buscar.value)" #buscar />
+                <label for="buscar">Busque por CUI</label>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12">
+      <table class="responsive-table highlight centered">
+        <thead>
+          <th class="center-align">CUI</th>
+          <th class="center-align">Nombres</th>
+          <th class="center-align">Apellidos</th>
+          <th class="center-align">Departamento</th>
+          <th class="center-align">Municipio</th>
+          <th class="center-align">Fecha de Nacimiento</th>
+          <th class="center-align">Genero</th>
+          <th class="center-align">CUI Madre</th>
+          <th class="center-align">CUI Padre</th>
+          <th class="center-align">Lugar de Nacimiento</th>
+        </thead>
+        <tbody>
+          <tr *ngIf="nacimientoService.nacimiento.data.cui != ''">
+            <td>{{ nacimientoService.nacimiento.data.cui }}</td>
+            <td>{{ nacimientoService.nacimiento.data.nombre }}</td>
+            <td>{{ nacimientoService.nacimiento.data.apellido }}</td>
+            <td>{{ nacimientoService.nacimiento.data.departamento }}</td>
+            <td>{{ nacimientoService.nacimiento.data.municipio }}</td>
+            <td>{{ nacimientoService.nacimiento.data.fechaNacimiento }}</td>
+            <td>{{ nacimientoService.nacimiento.data.genero }}</td>
+            <td>{{ nacimientoService.nacimiento.data.cuiMadre }}</td>
+            <td>{{ nacimientoService.nacimiento.data.cuiPadre }}</td>
+            <td>{{ nacimientoService.nacimiento.data.lugarNacimiento }}</td>
+            <td>
+              <a class="btn-floating pulse red" (click)='imprimeActa()'>
+                <i class="material-icons ">Imprimir</i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s12">
+      <div class="card">
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">Crear Acta de Nacimiento</span>
+          <form #nacimientoForm="ngForm" (ngSubmit)="addActaNacimiento(nacimientoForm)">
+            <div class="row">
+              <div class="input-field col s4">
+                <label for="idPais">Pais</label>
+                <input type="text" name='idPais' data-length="10"  [(ngModel)]="idPais"  class="validate" 
+                readonly required/>
+              </div>
+              <div class="input-field col s4">
+                <select (change)="deptoSelected($event.target.value)" id="select" name='departamento' #departamento="ngModel"
+                  class="validate" [(ngModel)]="nacimientoService.selectedNacimiento.data.departamento" required>
+                  <option value="" disabled selected>Seleccione un departamento</option>
+                  <option *ngFor="let dep of this.departamentos" value="{{dep.idDepartamento}}">{{dep.departamento}}</option>
+                </select>
+                <label for="departamento">Seleccionar Departamento</label>
+              </div>
+              <div class="input-field col s4">
+                <select (change)="muniSelected($event.target.value)" id="select2" name='municipio' #municipio="ngModel"
+                  class="validate" [(ngModel)]="nacimientoService.selectedNacimiento.data.municipio">
+                  <option value="" disabled selected>Seleccione un municipio</option>
+                  <option *ngFor="let mun of this.municipios" value="{{mun.idMunicipio}}">{{mun.municipio}}</option>
+                </select>
+                <label for="municipio">Seleccionar Municipio</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s6">
+                <label for="nombres">Nombre(s)</label>
+                <input type="text" name='nombre' #nombre="ngModel" data-length="50" class="validate" [(ngModel)]="nacimientoService.selectedNacimiento.data.nombres"
+                  required />
+              </div>
+              <div class="input-field col s6">
+                <label for="apellidos">Apellido(s)</label>
+                <input type="text" name='apellido' #apellido="ngModel" data-length="50" class="validate" [(ngModel)]="nacimientoService.selectedNacimiento.data.apellidos"
+                  required />
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s4">
+                <select id="selectGen" name='genero' #genero="ngModel" class="validate" [(ngModel)]="nacimientoService.selectedNacimiento.data.genero"
+                  required>
+                  <option value="" disabled selected>Selecione el genero</option>
+                  <option *ngFor="let gen of this.generos" value="{{gen.id}}">{{gen.genero}}</option>
+                </select>
+                <label for="Genero">Seleccionar Genero</label>
+              </div>
+              <div class="input-field col s4">
+                <label for="cui_padre">CUI Padre</label>
+                <input type="text" name='cuiPadre' #cui_padre="ngModel" data-length="13" class="validate" [(ngModel)]="nacimientoService.selectedNacimiento.data.cuiPadre"
+                  required />
+              </div>
+              <div class="input-field col s4">
+                <label for="cui_madre">CUI Madre</label>
+                <input type="text" name='cuiMadre' #cui_madre="ngModel" data-length="13" class="validate" [(ngModel)]="nacimientoService.selectedNacimiento.data.cuiMadre"
+                  required />
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s6">
+                <input type="date" name='fechaNacimiento' #fechaNacimiento="ngModel" placeholder="13/02/1995" class="validate"
+                  [(ngModel)]="nacimientoService.selectedNacimiento.data.fechaNacimiento" required />
+                <label for="fecha_nacimiento">Fecha de nacimiento</label>
+              </div>
+              <div class="input-field col s6">
+                <label for="lugar_nacimiento">Lugar de nacimiento</label>
+                <input type="text" name='lugarNacimiento' #lugarNacimiento="ngModel" data-length="250" class="validate"
+                  [(ngModel)]="nacimientoService.selectedNacimiento.data.lugarNacimiento" required />
+              </div>
+            </div>
+            <div class="row">
+              <div class="card-action">
+                <div class="input-field col s4 offset-s8">
+                  <button class="btn right">Crear Acta</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

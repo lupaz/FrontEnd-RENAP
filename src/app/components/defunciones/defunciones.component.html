@@ -1,0 +1,127 @@
+<div *ngIf="preloader" class="progress" style="margin-top: -19.5px;">
+  <div class="indeterminate"></div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+      <div class="card">
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">Buscar</span>
+          <form>
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">search</i>
+                <input type="text" name="buscar" id="buscar" (keyup)="searchDefuncion(buscar.value)" #buscar />
+                <label for="buscar">Busqueda por CUI</label>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12">
+      <table class="responsive-table highlight centered">
+        <thead>
+          <th class="center-align">CUI</th>
+          <th class="center-align">CUI Compareciente</th>
+          <th class="center-align">Lugar Defuncion</th>
+          <th class="center-align">Fecha Hora</th>
+          <th class="center-align">Causa</th>
+        </thead>
+        <tbody>
+          <tr *ngIf="defuncionService.defuncion.data.cui != ''">
+            <td>{{ defuncionService.defuncion.data.cui }}</td>
+            <td>{{ defuncionService.defuncion.data.cuiCompareciente }}</td>
+            <td>{{ defuncionService.defuncion.data.lugarDefuncion }}</td>
+            <td>{{ defuncionService.defuncion.data.fechaDefuncion }}</td>
+            <td>{{ defuncionService.defuncion.data.causa }}</td>
+            <td>
+              <a class="btn-floating pulse red" (click)='imprimeActa()'>
+                <i class="material-icons ">Imprimir</i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s12">
+      <div class="card">
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">Crear Acta de Defuncion</span>
+          <form #defuncionForm="ngForm" (ngSubmit)="addActaDefuncion(defuncionForm)">
+            <div class="row">
+              <div class="input-field col s4">
+                <label for="idPais">Pais</label>
+                <input type="text" name='idPais' data-length="10" [(ngModel)]="idPais" class="validate" readonly
+                  required />
+              </div>
+
+              <div class="input-field col s4">
+                <select (change)="deptoSelected($event.target.value)" id="select" name='departamento' #departamento="ngModel"
+                  class="validate" [(ngModel)]="defuncionService.selectedDefuncion.data.departamento" required>
+                  <option value="" disabled selected>Seleccione un departamento</option>
+                  <option *ngFor="let dep of this.departamentos" value="{{dep.idDepartamento}}">{{dep.departamento}}</option>
+                </select>
+                <label for="departamento">Seleccionar Departamento</label>
+              </div>
+
+              <div class="input-field col s4">
+                  <select (change)="muniSelected($event.target.value)" id="select2" name='municipio' #municipio="ngModel" class="validate" 
+                  [(ngModel)]="defuncionService.selectedDefuncion.data.municipio" required>
+                  <option value="" disabled selected>Seleccione un municipio</option>
+                  <option *ngFor="let mun of this.municipios" value="{{mun.idMunicipio}}">{{mun.municipio}}</option>
+                </select>
+                <label for="municipio">Seleccionar Municipio</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s6">
+                <label for="cui">CUI</label>
+                <input type="text" name='cui' #cui="ngModel" data-length="13" class="validate" [(ngModel)]="defuncionService.selectedDefuncion.data.cui"
+                  required />
+              </div>
+              <div class="input-field col s6">
+                <label for="cui_compareciente">CUI Compareciente</label>
+                <input type="text" name='cuiCompareciente' #cuiCompareciente="ngModel" data-length="13" class="validate"
+                  [(ngModel)]="defuncionService.selectedDefuncion.data.cuiCompareciente" required />
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s6">
+                <label for="lugar">Lugar de Defucion</label>
+                <input type="text" name='lugarDefuncion' #lugarDefuncion="ngModel" data-length="250" class="validate"
+                  [(ngModel)]="defuncionService.selectedDefuncion.data.lugarDefuncion" required />
+              </div>
+              <div class="input-field col s6">
+                <input type="date" name='fechaDefuncion' #fechaDefuncion="ngModel" placeholder="13/02/1995 10:53:24"
+                  class="validate" [(ngModel)]="defuncionService.selectedDefuncion.data.fechaDefuncion" required />
+                <label for="fecha_hora">Fecha de Defuncion</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <label for="causa">Causa</label>
+                <input type="text" name='causa' #lugar_defuncion="ngModel" data-length="250" class="validate"
+                  [(ngModel)]="defuncionService.selectedDefuncion.data.causa" required />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="card-action">
+                <div class="input-field col s4 offset-s8">
+                  <button class="btn right">Crear Acta</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
