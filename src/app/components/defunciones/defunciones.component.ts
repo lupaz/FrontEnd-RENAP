@@ -302,7 +302,7 @@ export class DefuncionesComponent implements OnInit {
         console.log(this.departamentos);
       });
 
-    delay(500).then(() => {
+    delay(600).then(() => {
       this.cargarSelect1();
     });
 
@@ -318,7 +318,7 @@ export class DefuncionesComponent implements OnInit {
         //console.log(this.municipios);
       });
 
-    delay(500).then(() => {
+    delay(600).then(() => {
       this.cargarSelect2();
     });
   }
