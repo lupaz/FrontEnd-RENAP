@@ -52,6 +52,7 @@ export class DivorciosComponent implements OnInit {
       form.reset();
       this.divorcioService.selectedDivorcio = new Divorcio();
       this.divorcioService.selectedDivorcio.data = new DatosDiv();
+      this.idPais = localStorage.getItem('Pais');
     }
   }
 
@@ -317,9 +318,9 @@ export class DivorciosComponent implements OnInit {
     this.idMunicicipio = muniSelected;
   }
 
-  convertirFecha(fecha: string) {
-    var newFecha = fecha.split("-");
-    var format = newFecha[2] + '/' + newFecha[1] + '/' + newFecha[0];
+  convertirFecha(fecha:string){
+    var newFecha =fecha.split("-");
+    var format=newFecha[2]+newFecha[1]+newFecha[0]+"000000";
     return format;
   }
 

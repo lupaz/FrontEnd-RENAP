@@ -64,6 +64,7 @@ export class MatrimoniosComponent implements OnInit {
       form.reset();
       this.matrimonioService.selectedMatrimonio = new Matrimonio();
       this.matrimonioService.selectedMatrimonio.data = new DatosMat();
+      this.idPais = localStorage.getItem('Pais');
     }
   }
 
@@ -333,9 +334,9 @@ export class MatrimoniosComponent implements OnInit {
     this.idMunicicipio = muniSelected;
   }
 
-  convertirFecha(fecha: string) {
-    var newFecha = fecha.split("-");
-    var format = newFecha[2] + '/' + newFecha[1] + '/' + newFecha[0];
+  convertirFecha(fecha:string){
+    var newFecha =fecha.split("-");
+    var format=newFecha[2]+newFecha[1]+newFecha[0]+"000000";
     return format;
   }
 

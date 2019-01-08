@@ -60,6 +60,7 @@ export class NacimientosComponent implements OnInit {
       form.reset();
       this.nacimientoService.selectedNacimiento = new Nacimiento();
       this.nacimientoService.selectedNacimiento.data = new Datos();
+      this.idPais = localStorage.getItem('Pais');
     }
   }
 
@@ -331,7 +332,8 @@ export class NacimientosComponent implements OnInit {
 
   convertirFecha(fecha:string){
     var newFecha =fecha.split("-");
-    var format=newFecha[2]+'/'+newFecha[1]+'/'+newFecha[0];
+    var format=newFecha[2]+newFecha[1]+newFecha[0]+"000000";
     return format;
   }
+
 }

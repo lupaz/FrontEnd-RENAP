@@ -49,6 +49,7 @@ export class DefuncionesComponent implements OnInit {
       form.reset();
       this.defuncionService.selectedDefuncion = new Defuncion();
       this.defuncionService.selectedDefuncion.data = new DatosDef();
+      this.idPais = localStorage.getItem('Pais');
     }
   }
 
@@ -345,9 +346,9 @@ export class DefuncionesComponent implements OnInit {
     this.idMunicicipio = muniSelected;
   }
 
-  convertirFecha(fecha: string) {
-    var newFecha = fecha.split("-");
-    var format = newFecha[2] + '/' + newFecha[1] + '/' + newFecha[0];
+  convertirFecha(fecha:string){
+    var newFecha =fecha.split("-");
+    var format=newFecha[2]+newFecha[1]+newFecha[0]+"000000";
     return format;
   }
 
