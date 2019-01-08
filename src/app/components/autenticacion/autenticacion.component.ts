@@ -53,7 +53,7 @@ export class AutenticacionComponent implements OnInit {
         this.autenticacionService.departamentos = res as Departamentos;
         //this.departamentos={};
         this.departamentos = this.autenticacionService.departamentos.data.listaDepartamentos;
-        //console.log(this.departamentos);
+        console.log(this.departamentos);
       });
 
     delay(500).then(() => {
@@ -63,7 +63,7 @@ export class AutenticacionComponent implements OnInit {
   }
 
   getMunicipios(idDepto) {
-    var json = '{"idDepartamento": "' + idDepto + '"}';
+    var json = '{"idDepartamento": "' + idDepto + '",\n"idPais" : "'+this.idPais+'"}';
     this.autenticacionService.getMunicipios(json)
       .subscribe(res => {
         //this.autenticacionService.municipios= new Municipios();       

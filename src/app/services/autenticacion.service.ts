@@ -7,6 +7,8 @@ import { DataD } from '../models/datoDepto';
 import { DatosMuni } from '../models/datosMuni';
 import { Municipios } from '../models/municipios';
 import { DataM } from '../models/datoMuni';
+import { DIRS } from '../models/uri';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -14,7 +16,7 @@ export class AutenticacionService {
 
   departamentos: Departamentos;
   municipios: Municipios; 
-  readonly URL_API = 'http://35.233.139.110:3000/api';
+  readonly URL_API = DIRS.uri;
 
   constructor(private router: Router,private http: HttpClient) { 
     this.departamentos = new Departamentos();
@@ -29,8 +31,9 @@ export class AutenticacionService {
 
   getDeptos(pais) {
     console.log(pais);
+    console.log(this.URL_API);
     return this.http.post(this.URL_API+'/obtenerListaDepartamentos',pais,{
-      headers: { 'Content-Type':'application/json'}});
+      headers: { 'Content-Type':'application/json','Access-Control-Allow-Origin': '*','Access-Control-Allow-Methods':'DELETE, POST, GET, OPTIONS','Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With'}});
   }
 
 
