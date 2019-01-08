@@ -287,7 +287,7 @@ export class NacimientosComponent implements OnInit {
   }
 
   getMunicipios(idDepto) {
-    var json = '{"idDepartamento": "' + idDepto + '"}';
+    var json = '{"idDepartamento": "' + idDepto + '",\n"idPais" : "'+this.idPais+'"}';
     this.autenticacionService.getMunicipios(json)
       .subscribe(res => {
         //this.autenticacionService.municipios= new Municipios();       
@@ -295,7 +295,7 @@ export class NacimientosComponent implements OnInit {
         this.municipios = this.autenticacionService.municipios.data.listaMunicipios;
         //console.log(this.municipios);
       });
-
+      
     delay(500).then(() => {
       this.cargarSelect2();
     });

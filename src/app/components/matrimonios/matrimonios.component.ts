@@ -291,7 +291,7 @@ export class MatrimoniosComponent implements OnInit {
   }
 
   getMunicipios(idDepto) {
-    var json = '{"idDepartamento": "' + idDepto + '"}';
+    var json = '{"idDepartamento": "' + idDepto + '",\n"idPais" : "'+this.idPais+'"}';
     this.autenticacionService.getMunicipios(json)
       .subscribe(res => {
         //this.autenticacionService.municipios= new Municipios();       
