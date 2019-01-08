@@ -1,24 +1,44 @@
 export class DatosDiv {
     
-    constructor(cui_hombre ='',cui_mujer= '', registro_matrimonial = '', activo = '',
-    departamento ='', municipio = '', lugar= '', fecha= '', regimen_economico= '') {
-        this.cui_hombre=cui_hombre;
-        this.cui_mujer = cui_mujer;
-        this.lugar = lugar;
-        this.fecha = fecha;
-        this.departamento = departamento;
+    constructor(cuiHombre ='',nombreHombre='',apellidoHombre='',paisHombre='',departamentoHombre='',municipioHombre='',
+    cuiMujer= '',nombreMujer='',apellidoMujer='',paisMujer='',departamentoMujer='',municipioMujer='',
+    municipio = '',lugarDivorcio = '',fechaDivorcio='',regimenMatrimonial='') {
+        this.cuiHombre=cuiHombre;
+        this.nombreHombre=nombreHombre;
+        this.apellidoHombre=apellidoHombre;
+        this.paisHombre=paisHombre;
+        this.departamentoHombre= departamentoHombre;
+        this.municipioHombre= municipioHombre;
+
+        this.cuiMujer = cuiMujer;
+        this.nombreMujer= nombreMujer;
+        this.apellidoMujer= apellidoMujer;
+        this.paisMujer= paisMujer;
+        this.departamentoMujer= departamentoMujer;
+        this.municipioMujer= municipioMujer;
+
         this.municipio = municipio;
-        this.regimen_economico= regimen_economico;
-        this.activo=activo;
-        this.registro_matrimonial=registro_matrimonial;
-    }    
-    cui_hombre: String;
-    cui_mujer: String;
-    regimen_economico : String;
-    activo:String;
-    registro_matrimonial:String;
-    lugar: String;
-    fecha: String;
-    departamento: String;
+        this.lugarDivorcio = lugarDivorcio;
+        this.fechaDivorcio = fechaDivorcio;
+        this.regimenMatrimonial= regimenMatrimonial;
+    }
+        
+    cuiHombre: String;
+    nombreHombre:String;
+    apellidoHombre:String;
+    paisHombre:String;
+    departamentoHombre:String;
+    municipioHombre:String;
+    //datos woman
+    cuiMujer: String;
+    nombreMujer:String;
+    apellidoMujer:String;
+    paisMujer:String;
+    departamentoMujer:String;
+    municipioMujer:String;
+    
     municipio: String;
+    lugarDivorcio: String;
+    fechaDivorcio: String;
+    regimenMatrimonial : String;
 }

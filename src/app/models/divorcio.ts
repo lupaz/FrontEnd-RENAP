@@ -1,5 +1,5 @@
-import { Datos } from './datoDiv';
-export class Matrimonio {
+import { DatosDiv } from './datosDiv';
+export class Divorcio {
     constructor(status ='', mensaje = '', data = null) {
         this.status = status;
         this.mensaje = mensaje;
@@ -7,5 +7,5 @@ export class Matrimonio {
     }    
     status: String;
     mensaje: String;
-    data: Datos;
+    data: DatosDiv;
 }

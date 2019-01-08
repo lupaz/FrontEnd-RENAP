@@ -1,3 +1,126 @@
-<p>
-  divorcios works!
-</p>
+<div *ngIf="preloader" class="progress" style="margin-top: -19.5px;">
+  <div class="indeterminate"></div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+      <div class="card">
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">Buscar</span>
+          <form>
+            <div class="row">
+              <div class="input-field col s5">
+                <i class="material-icons prefix">search</i>
+                <input type="text" name="buscar" id="buscar" [(ngModel)]="cui_Hombre" />
+                <label for="buscar">Ingrese el CUI del esposo</label>
+              </div>
+              <div class="input-field col s5">
+                <i class="material-icons prefix">search</i>
+                <input type="text" name="buscar" id="buscar" [(ngModel)]="cui_Mujer" />
+                <label for="buscar">Ingrese el CUI de la esposa</label>
+              </div>
+              <div class="input-field col s2">
+                <button class="btn right" (click)="searchDivorcio()">Buscar Acta</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12">
+      <table class="responsive-table highlight centered">
+        <thead>
+          <th class="center-align">Cónyuge</th>
+          <th class="center-align">Cónyuge</th>
+          <th class="center-align">Fecha Divorcio</th>
+          <th class="center-align">Lugar Divorcio</th>
+          <th class="center-align">Regimen Matrimonial</th>
+        </thead>
+        <tbody>
+          <tr *ngIf="divorcioService.divorcio.data.cuiHombre != ''">
+            <td>{{ divorcioService.divorcio.data.nombreHombre+' '+divorcioService.divorcio.data.apellidoHombre}}</td>
+            <td>{{ divorcioService.divorcio.data.nombreMujer+' '+divorcioService.divorcio.data.apellidoMujer }}</td>
+            <td>{{ divorcioService.divorcio.data.fechaDivorcio }}</td>
+            <td>{{ divorcioService.divorcio.data.lugarDivorcio }}</td>
+            <td>{{ divorcioService.divorcio.data.regimenMatrimonial }}</td>
+            <td>
+              <a class="btn-floating pulse red" (click)='imprimeActa()'>
+                <i class="material-icons ">Imprimir</i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s12">
+      <div class="card">
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">Crear Acta de Divorcio</span>
+          <form #divorcioForm="ngForm" (ngSubmit)="addActaDivorcio(divorcioForm)">
+            <div class="row">
+
+              <div class="input-field col s4">
+                <label for="idPais">Pais</label>
+                <input type="text" name='idPais' data-length="10" [(ngModel)]="idPais" class="validate" readonly
+                  required />
+              </div>
+
+              <div class="input-field col s4">
+                <select (change)="deptoSelected($event.target.value)" id="select" name='departamento' class="validate"
+                  required>
+                  <option value="" disabled selected>Seleccione un departamento</option>
+                  <option *ngFor="let dep of this.departamentos" value="{{dep.idDepartamento}}">{{dep.departamento}}</option>
+                </select>
+                <label for="departamento">Seleccionar Departamento</label>
+              </div>
+              <div class="input-field col s4">
+                <select (change)="muniSelected($event.target.value)" id="select2" name='municipio' #municipio="ngModel"
+                  class="validate" [(ngModel)]="divorcioService.selectedDivorcio.data.municipio">
+                  <option value="" disabled selected>Seleccione un municipio</option>
+                  <option *ngFor="let mun of this.municipios" value="{{mun.idMunicipio}}">{{mun.municipio}}</option>
+                </select>
+                <label for="municipio">Seleccionar Municipio</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s6">
+                <label for="cui_hombre">CUI Hombre</label>
+                <input type="text" name='cuiHombre' #cuiHombre="ngModel" data-length="13" class="validate" [(ngModel)]="divorcioService.selectedDivorcio.data.cuiHombre"
+                  required />
+              </div>
+              <div class="input-field col s6">
+                <label for="cui_mujer">CUI Mujer</label>
+                <input type="text" name='cuiMujer' #cuiMujer="ngModel" data-length="13" class="validate" [(ngModel)]="divorcioService.selectedDivorcio.data.cuiMujer"
+                  required />
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s6">
+                <input type="date" name='fechaDivorcio' #fechaDivorcio="ngModel" placeholder="13/02/1995" class="validate"
+                  [(ngModel)]="divorcioService.selectedDivorcio.data.fechaDivorcio" required />
+                <label for="fecha">Fecha</label>
+              </div>
+              <div class="input-field col s6">
+                <label for="lugar">Lugar de Divorcio</label>
+                <input type="text" name='lugarDivorcio' #lugar="ngModel" data-length="250" class="validate" [(ngModel)]="divorcioService.selectedDivorcio.data.lugarDivorcio"
+                  required />
+              </div>
+            </div>
+            <div class="row">
+              <div class="card-action">
+                <div class="input-field col s4 offset-s8">
+                  <button class="btn right">Crear Acta</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
